@@ -1,28 +1,7 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 5c2f4ff (Switched to docker and termious)
 # ROS2 Keyboard to Joy
 
 `keyboard_joy` is a ROS2 package that allows you to simulate joystick input using your keyboard. This is particularly useful for testing and development when a physical joystick is not available.
 
-<<<<<<< HEAD
-Tested on ROS2 Humble.
-
-## Installation
-
-1. **Install ROS2**: Follow the official ROS2 installation guide for your operating system.
-
-2. **Install the `pynput` Library**:
-
-   This package requires `pynput` to capture keyboard input. Install it using pip:
-
-   ```bash
-   pip3 install pynput
-   ```
-
-3. **Clone the `keyboard_joy` Package**:
-=======
 Works with both X11 and Wayland.
 
 Tested on ROS2 Jazzy.
@@ -34,7 +13,6 @@ Tested on ROS2 Jazzy.
 1. **Install ROS2**: Follow the official ROS2 installation guide for your operating system.
 
 2. **Clone the `keyboard_joy` Package**:
->>>>>>> 5c2f4ff (Switched to docker and termious)
 
    Navigate to your ROS2 workspace's `src` directory and clone the package repository:
 
@@ -43,11 +21,7 @@ Tested on ROS2 Jazzy.
    git clone https://github.com/atarbabgei/keyboard_joy.git
    ```
 
-<<<<<<< HEAD
-4. **Build the Package**:
-=======
 3. **Build the Package**:
->>>>>>> 5c2f4ff (Switched to docker and termious)
 
    Build your workspace to compile the package:
 
@@ -56,11 +30,7 @@ Tested on ROS2 Jazzy.
    colcon build --packages-select keyboard_joy
    ```
 
-<<<<<<< HEAD
-5. **Source the Workspace**:
-=======
 4. **Source the Workspace**:
->>>>>>> 5c2f4ff (Switched to docker and termious)
 
    Source your workspace to overlay your environment:
 
@@ -68,58 +38,6 @@ Tested on ROS2 Jazzy.
    source install/setup.bash
    ```
 
-<<<<<<< HEAD
-## Usage
-
-To run the `keyboard_joy` node using the default configuration (as stored in `/config/key_mappings.yaml`), execute the following command:
-
-```bash
-ros2 launch keyboard_joy keyboard_joy.launch.py
-```
-
-However, if you want to use a custom YAML configuration file for your project, run the following command:
-
-```bash
-ros2 launch keyboard_joy keyboard_joy.launch.py config:=/your_path/your_config_file.yaml
-```
-
-Replace `/your_path/your_config_file.yaml` with the path to your custom YAML file.
-
-## Configuration
-
-The key mappings for the joystick simulation are configured using a YAML file which allows you to customize which keyboard keys map to specific joystick axes and buttons.
-
-### Example YAML Configuration
-
-```yaml
-# Config for mapping keyboard keys to joystick axes and buttons
-
-axes:
-  # Axis mappings: Define which keyboard keys control specific joystick axes
-  # Format: '<key>: [<axis_index>, <axis_value>, <mode>'
-  w: [0, 1.0, 'normal'] 
-  s: [0, -1.0, 'normal'] 
-  a: [1, 1.0, 'normal']
-  d: [1, -1.0, 'normal']
-  Key.up: [2, 1.0, 'sticky']   
-  Key.down: [2, -1.0, 'sticky']
-  Key.left: [3, 1.0, 'sticky']
-  Key.right: [3, -1.0, 'sticky']
-
-# Parameters for axis increment_rate, increment_step
-parameters:
-  axis_increment_rate: 0.01   # Time interval for updating axis values
-  axis_increment_step: 0.01   # Step size for axis value change
-
-buttons:
-  # Button mappings: Define which keyboard keys toggle specific joystick buttons
-  # Format: '<key>: <button_index>'
-  '0': 0 
-  '1': 1 
-  '2': 2 
-  '3': 3 
-```
-=======
 ### Using Docker
 
 Build the Docker image:
@@ -260,4 +178,3 @@ buttons:
   tab: 2
   esc: 3
 ```
->>>>>>> 5c2f4ff (Switched to docker and termious)
