@@ -1,0 +1,39 @@
+# Config for mapping keyboard keys to joystick axes and buttons
+# Mapped to work like a standard gamepad (PS4/Xbox style)
+
+axes:
+  # Left stick (axes 0-1)
+  w: [0, 1.0]
+  s: [0, -1.0]
+  a: [1, 1.0]
+  d: [1, -1.0]
+
+  # Right stick (axes 2-3)
+  i: [2, 1.0]
+  k: [2, -1.0]
+  j: [3, 1.0]
+  l: [3, -1.0]
+
+buttons:
+  # Face buttons (Xbox layout)
+  v: 0      # A / Cross (bottom)
+  b: 1      # B / Circle (right)
+  n: 2      # X / Square (left)
+  m: 3      # Y / Triangle (top)
+
+  # Shoulder buttons
+  q: 4      # LB / L1
+  e: 5      # RB / R1
+
+  # Thumb buttons (stick clicks)
+  z: 8      # LS / L3
+  x: 9      # RS / R3
+
+  # D-pad
+  "1": 10     # D-pad Up
+  "2": 11     # D-pad Down
+  "3": 12     # D-pad Left
+  "4": 13     # D-pad Right
+
+  # System buttons
+  " ": 14  # Options / Share (Space)

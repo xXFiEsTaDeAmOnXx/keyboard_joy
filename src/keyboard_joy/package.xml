@@ -4,13 +4,12 @@
   <name>keyboard_joy</name>
   <version>0.0.1</version>
   <description>A ROS 2 package to simulate joystick inputs with a keyboard.</description>
-  <maintainer email="atarbabgei@gmail.com">atar</maintainer>
-  <license>MIT</license>
+  <maintainer email="todo@todo">atar</maintainer>
 
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
 
-  <exec_depend>pynput</exec_depend>
+  
 
 
   <test_depend>ament_copyright</test_depend>
