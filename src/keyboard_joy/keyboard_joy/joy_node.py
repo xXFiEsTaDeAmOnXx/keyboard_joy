@@ -25,9 +25,6 @@ class KeyboardJoy(Node):
         self.get_logger().info("KeyboardJoy Node Started")
         self.get_logger().info(f"Loaded axis mappings: {self.axis_mappings}")
         self.get_logger().info(f"Loaded button mappings: {self.button_mappings}")
-        self.get_logger().info(
-            f"Axis increment rate: {self.axis_increment_rate}, step: {self.axis_increment_step}"
-        )
 
         self.joy_publisher = self.create_publisher(Joy, "joy", 10)
 
@@ -40,7 +37,6 @@ class KeyboardJoy(Node):
             [0] * (max_button_index + 1) if max_button_index >= 0 else []
         )
 
-        self.active_axes = {}
         self.sticky_axes = {}
         self.last_buttons = (
             [0] * (max_button_index + 1) if max_button_index >= 0 else []
@@ -54,11 +50,6 @@ class KeyboardJoy(Node):
         self.listener_thread.start()
 
         self.timer = self.create_timer(0.1, self.publish_joy)
-
-        if self.axis_increment_rate > 0:
-            self.increment_timer = self.create_timer(
-                self.axis_increment_rate, self.update_active_axes
-            )
 
     def load_key_mappings(self):
         config_file_path = (
@@ -81,10 +72,6 @@ class KeyboardJoy(Node):
 
         self.axis_mappings = key_mappings.get("axes", {})
         self.button_mappings = key_mappings.get("buttons", {})
-
-        parameters = key_mappings.get("parameters", {})
-        self.axis_increment_rate = parameters.get("axis_increment_rate", 0.1)
-        self.axis_increment_step = parameters.get("axis_increment_step", 0.05)
 
     def get_key(self, timeout=0.2):
         fd = sys.stdin.fileno()
@@ -186,20 +173,6 @@ class KeyboardJoy(Node):
                 if buttons != self.last_buttons or axes != self.last_axes:
                     self.last_buttons = buttons
                     self.last_axes = axes
-
-    def update_active_axes(self):
-        with self.lock:
-            for axis_idx, target_value in self.active_axes.items():
-                if axis_idx < len(self.joy_msg.axes):
-                    current = self.joy_msg.axes[axis_idx]
-                    if target_value > 0:
-                        self.joy_msg.axes[axis_idx] = min(
-                            current + self.axis_increment_step, target_value
-                        )
-                    else:
-                        self.joy_msg.axes[axis_idx] = max(
-                            current - self.axis_increment_step, target_value
-                        )
 
     def publish_joy(self):
         with self.lock:

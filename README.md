@@ -168,10 +168,6 @@ axes:
   j: [3, 1.0, 'sticky']
   l: [3, -1.0, 'sticky']
 
-parameters:
-  axis_increment_rate: 0.05
-  axis_increment_step: 0.1
-
 buttons:
   space: 0
   enter: 1
